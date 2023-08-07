@@ -1,7 +1,11 @@
 "use client"
 
 import InputField from "@/components/InputField"
-import listeningNCLCL from "@/constants/NCLCRange"
+import {
+  listeningNCLCL,
+  readingNCLCL,
+  speakingWritingNCLC,
+} from "@/constants/NCLCRange"
 import React, { ChangeEvent, FormEvent, useState } from "react"
 
 export default function Home() {

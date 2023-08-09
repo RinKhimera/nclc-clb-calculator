@@ -1,4 +1,8 @@
-export const listeningNCLCL = (score: number): number | null => {
+export const listeningNCLCL = (score: number | null): number | null => {
+  if (score === null) {
+    return null
+  }
+
   if (score >= 331 && score <= 368) {
     return 4
   } else if (score >= 369 && score <= 397) {
@@ -18,7 +22,11 @@ export const listeningNCLCL = (score: number): number | null => {
   }
 }
 
-export const readingNCLCL = (score: number): number | null => {
+export const readingNCLCL = (score: number | null): number | null => {
+  if (score === null) {
+    return null
+  }
+
   if (score >= 342 && score <= 374) {
     return 4
   } else if (score >= 375 && score <= 405) {
@@ -38,7 +46,11 @@ export const readingNCLCL = (score: number): number | null => {
   }
 }
 
-export const speakingWritingNCLC = (score: number): number | null => {
+export const speakingWritingNCLC = (score: number | null): number | null => {
+  if (score === null) {
+    return null
+  }
+
   if (score >= 4 && score <= 5) {
     return 4
   } else if (score === 6) {

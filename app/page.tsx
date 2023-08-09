@@ -6,44 +6,55 @@ import {
   readingNCLCL,
   speakingWritingNCLC,
 } from "@/constants/NCLCRange"
-import React, { ChangeEvent, FormEvent, useState } from "react"
+import getLowestNCLCValue from "@/hooks/NCLCValue"
+import { ChangeEvent, FormEvent, useState } from "react"
 
 export default function Home() {
-  const [listening, setListening] = useState<number | string>("")
-  const [reading, setReading] = useState<number | string>("")
-  const [speaking, setSpeaking] = useState<number | string>("")
-  const [writing, setWriting] = useState<number | string>("")
-  const [highestScore, setHighestScore] = useState<number | null>(null)
+  const [listening, setListening] = useState<number | null>(null)
+  const [reading, setReading] = useState<number | null>(null)
+  const [speaking, setSpeaking] = useState<number | null>(null)
+  const [writing, setWriting] = useState<number | null>(null)
+  const [NCLCScore, setNCLCScore] = useState<number | null>(null)
 
   const handleListeningChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setListening(event.target.value)
+    setListening(parseInt(event.target.value, 10))
   }
 
   const handleReadingChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setReading(event.target.value)
+    setReading(parseInt(event.target.value, 10))
   }
 
   const handleSpeakingChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSpeaking(event.target.value)
+    setSpeaking(parseInt(event.target.value, 10))
   }
 
   const handleWritingChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setWriting(event.target.value)
+    setWriting(parseInt(event.target.value, 10))
   }
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
     // Process the form submission here
-    const scores = [listening, reading, speaking, writing].map(Number)
-    const highest = Math.max(...scores)
+    let listeningScore = listeningNCLCL(listening)
+    let readingScore = readingNCLCL(reading)
+    let speakingScore = speakingWritingNCLC(speaking)
+    let writingScore = speakingWritingNCLC(writing)
 
-    setHighestScore(highest)
+    const lowestScore = getLowestNCLCValue(
+      listeningScore,
+      readingScore,
+      speakingScore,
+      writingScore
+    )
+
+    setNCLCScore(lowestScore)
+    console.log(NCLCScore)
   }
 
   return (
     <>
       <div className="flex h-screen items-center justify-center bg-gray-500">
-        <div className="w-11/12 rounded-xl bg-blue-200 p-5 lg:w-1/2">
+        <div className="w-11/12 rounded-xl bg-blue-200 p-5 lg:w-1/4">
           <h1 className="text-bold text-center text-2xl underline">
             Calculatrice NCLC TCF Canada
           </h1>
@@ -91,10 +102,9 @@ export default function Home() {
             <button type="submit">Résultat</button>
           </form>
 
-          {highestScore !== null && (
+          {NCLCScore !== null && (
             <div className="mt-5 text-center">
-              <p>Highest score: {highestScore}</p>
-              <p>NCLC Level: {listeningNCLCL(highestScore)}</p>
+              <p>NCLC {NCLCScore}</p>
             </div>
           )}
         </div>

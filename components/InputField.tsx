@@ -8,7 +8,7 @@ import { ChangeEvent } from "react"
 type InputProps = {
   label: string
   name: string
-  value: string | number
+  value: null | number
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
   min: number
   max: number
@@ -17,33 +17,6 @@ type InputProps = {
 const renderNCLCValue = (value: number | null) => {
   return value !== null ? <p>NCLC {value}</p> : null
 }
-
-// function getLowestNCLCValue(
-//   listeningNCLCValue: number | null,
-//   readingNCLCValue: number | null,
-//   speakingNCLCValue: number | null,
-//   writingNCLCValue: number | null
-// ): number | null {
-//   const valuesArray = [
-//     listeningNCLCValue,
-//     readingNCLCValue,
-//     speakingNCLCValue,
-//     writingNCLCValue,
-//   ].filter((value) => value !== null) as number[]
-
-//   if (valuesArray.length === 0) {
-//     return null // No valid values
-//   }
-
-//   return Math.min(...valuesArray)
-// }
-
-// const finalNCLC = getLowestNCLCValue(
-//   listeningNCLCValue,
-//   readingNCLCValue,
-//   speakingNCLCValue,
-//   writingNCLCValue
-// )
 
 const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
   const listeningMin = 331
@@ -97,7 +70,7 @@ const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
         <input
           type="number"
           name={name}
-          value={value}
+          value={value !== null ? value : ""}
           onChange={onChange}
           min={min}
           max={max}
@@ -105,7 +78,6 @@ const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
           className="w-1/2 rounded-lg px-5 py-2"
         />
         {renderNCLCValue(listeningNCLCValue)}
-        {listeningNCLCValue && <p>NCLCC {listeningNCLCValue} </p>}
         {renderNCLCValue(readingNCLCValue)}
         {renderNCLCValue(speakingNCLCValue)}
         {renderNCLCValue(writingNCLCValue)}

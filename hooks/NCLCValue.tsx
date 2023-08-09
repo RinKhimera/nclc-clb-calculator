@@ -12,8 +12,6 @@ const getLowestNCLCValue = (
     writingNCLCValue,
   ].filter((value) => value !== null) as number[]
 
-  console.log(valuesArray)
-
   // If there are no valid values to compare, return null
   if (valuesArray.length === 0) {
     return null // No valid values

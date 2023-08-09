@@ -48,7 +48,6 @@ export default function Home() {
     )
 
     setNCLCScore(lowestScore)
-    console.log(NCLCScore)
   }
 
   return (

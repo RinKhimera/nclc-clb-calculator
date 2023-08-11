@@ -61,8 +61,8 @@ const TcfCanada = () => {
   return (
     <>
       <div className="flex justify-center py-10">
-        <div className="flex w-11/12 flex-col justify-center rounded-xl bg-zinc-50 p-5 py-10 text-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-100 lg:w-3/4">
-          <h1 className="text-center text-3xl font-bold tracking-tight sm:text-5xl">
+        <div className="flex w-11/12 flex-col justify-center rounded-xl border border-zinc-100 bg-zinc-50 p-5 py-10 text-zinc-800 dark:border-none dark:bg-zinc-800/50 dark:text-zinc-100 lg:w-3/4">
+          <h1 className="text-center text-3xl font-bold tracking-tight transition sm:text-5xl">
             NCLC <span className="text-pink-600">TCF Canada</span>
           </h1>
           <form

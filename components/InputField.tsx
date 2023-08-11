@@ -15,7 +15,11 @@ type InputProps = {
 }
 
 const renderNCLCValue = (value: number | null) => {
-  return value !== null ? <p>NCLC {value}</p> : null
+  return value !== null ? (
+    <p>
+      NCLC <span className="text-pink-600">{value}</span>
+    </p>
+  ) : null
 }
 
 const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
@@ -63,11 +67,8 @@ const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
 
   return (
     <>
-      <div className="flex flex-col gap-1 py-1.5 lg:py-3">
-        <label
-          htmlFor={name}
-          className="text-center text-xl font-semibold lg:text-2xl"
-        >
+      <div className="flex flex-col gap-1 py-1.5 text-xl transition lg:py-3 lg:text-2xl">
+        <label htmlFor={name} className="text-center font-semibold">
           {label}
         </label>
         <div className="flex items-center justify-center gap-5">
@@ -79,9 +80,9 @@ const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
             min={min}
             max={max}
             required
-            className="w-1/2 rounded-lg px-5 py-2 text-center text-xl font-semibold text-black lg:w-1/4 lg:text-2xl"
+            className="w-1/2 rounded-xl border border-zinc-100 px-5 py-2 text-center font-semibold text-black transition focus:outline-none focus:ring-2 focus:ring-pink-600 lg:w-1/4"
           />
-          <div className="text-xl font-bold">
+          <div className="font-bold">
             {renderNCLCValue(listeningNCLCValue)}
             {renderNCLCValue(readingNCLCValue)}
             {renderNCLCValue(speakingNCLCValue)}

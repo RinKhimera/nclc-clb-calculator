@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <>
       <div className="mt-16 max-w-2xl lg:max-w-5xl">
-        <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+        <h1 className="text-4xl font-bold tracking-tight text-zinc-800 transition dark:text-zinc-100 sm:text-5xl">
           Salut&apos; ! Quel résultat allons-nous comparer aujourd&apos;hui ?
         </h1>
         <div className="my-8 flex max-w-lg flex-col gap-5">

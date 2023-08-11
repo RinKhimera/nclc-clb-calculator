@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer"
+import DarkModeToggle from "@/components/Header"
 import type { Metadata } from "next"
 import "./globals.css"
 
@@ -15,9 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col bg-zinc-50 dark:bg-black">
-        <div className=" inset-0 mx-auto flex min-h-screen w-full flex-col justify-between bg-white px-4 ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20 sm:w-11/12 sm:px-8 lg:max-w-6xl lg:px-24">
-          {children}
+      <body className="flex min-h-screen flex-col bg-zinc-50 transition dark:bg-black">
+        <div className=" inset-0 mx-auto flex min-h-screen w-full flex-col justify-between bg-white px-4 ring-1 ring-zinc-100 transition dark:bg-zinc-900 dark:ring-zinc-300/20 sm:w-11/12 sm:px-8 lg:max-w-6xl lg:px-24">
+          <DarkModeToggle />
+          <div className="grow">{children}</div>
           <Footer />
         </div>
       </body>

@@ -63,24 +63,31 @@ const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
 
   return (
     <>
-      <label htmlFor={name} className="font-semibold">
-        {label}
-      </label>
-      <div className="flex items-center gap-5">
-        <input
-          type="number"
-          name={name}
-          value={value !== null ? value : ""}
-          onChange={onChange}
-          min={min}
-          max={max}
-          required
-          className="w-1/2 rounded-lg px-5 py-2"
-        />
-        {renderNCLCValue(listeningNCLCValue)}
-        {renderNCLCValue(readingNCLCValue)}
-        {renderNCLCValue(speakingNCLCValue)}
-        {renderNCLCValue(writingNCLCValue)}
+      <div className="flex flex-col gap-1 py-1.5 lg:py-3">
+        <label
+          htmlFor={name}
+          className="text-center text-xl font-semibold lg:text-2xl"
+        >
+          {label}
+        </label>
+        <div className="flex items-center justify-center gap-5">
+          <input
+            type="number"
+            name={name}
+            value={value !== null ? value : ""}
+            onChange={onChange}
+            min={min}
+            max={max}
+            required
+            className="w-1/2 rounded-lg px-5 py-2 text-center text-xl font-semibold text-black lg:w-1/4 lg:text-2xl"
+          />
+          <div className="text-xl font-bold">
+            {renderNCLCValue(listeningNCLCValue)}
+            {renderNCLCValue(readingNCLCValue)}
+            {renderNCLCValue(speakingNCLCValue)}
+            {renderNCLCValue(writingNCLCValue)}
+          </div>
+        </div>
       </div>
     </>
   )

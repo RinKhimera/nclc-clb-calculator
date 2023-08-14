@@ -83,7 +83,7 @@ const TcfCanada = () => {
   }
   return (
     <>
-      <div className="flex justify-center py-10">
+      <div className="flex items-center justify-center">
         <motion.div
           className="flex w-11/12 flex-col justify-center rounded-xl border border-zinc-200 bg-zinc-100 p-5 py-10 text-zinc-800 dark:border-none dark:bg-zinc-800/50 dark:text-zinc-100 lg:w-3/4"
           variants={container}
@@ -158,7 +158,7 @@ const TcfCanada = () => {
 
           {NCLCScore !== null && (
             <motion.div
-              className="mt-5 text-center text-3xl font-bold text-pink-600 underline"
+              className="mt-5 text-center text-3xl font-bold text-pink-600 underline lg:text-5xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}

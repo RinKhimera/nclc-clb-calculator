@@ -7,8 +7,31 @@ import {
   speakingWritingNCLC,
 } from "@/constants/NCLCRange"
 import getLowestNCLCValue from "@/hooks/NCLCValue"
+import { motion } from "framer-motion"
 import { ChangeEvent, FormEvent, useState } from "react"
 import { TiDelete } from "react-icons/ti"
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.5,
+    },
+  },
+}
+
+const item = {
+  hidden: { y: 10, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delayChildren: 0.5,
+    },
+  },
+}
 
 const TcfCanada = () => {
   const [listening, setListening] = useState<number | null>(null)
@@ -61,14 +84,23 @@ const TcfCanada = () => {
   return (
     <>
       <div className="flex justify-center py-10">
-        <div className="flex w-11/12 flex-col justify-center rounded-xl border border-zinc-100 bg-zinc-50 p-5 py-10 text-zinc-800 dark:border-none dark:bg-zinc-800/50 dark:text-zinc-100 lg:w-3/4">
-          <h1 className="text-center text-3xl font-bold tracking-tight transition sm:text-5xl">
+        <motion.div
+          className="flex w-11/12 flex-col justify-center rounded-xl border border-zinc-200 bg-zinc-100 p-5 py-10 text-zinc-800 dark:border-none dark:bg-zinc-800/50 dark:text-zinc-100 lg:w-3/4"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1
+            className="text-center text-3xl font-bold tracking-tight transition sm:text-5xl"
+            variants={item}
+          >
             NCLC <span className="text-pink-600">TCF Canada</span>
-          </h1>
-          <form
+          </motion.h1>
+          <motion.form
             className="mt-5 flex flex-col"
             action="#"
             onSubmit={handleSubmit}
+            variants={item}
           >
             <InputField
               label="Compréhension orale :"
@@ -106,28 +138,35 @@ const TcfCanada = () => {
               max={20}
             />
 
-            <div className="flex justify-center gap-5">
-              <button
+            <motion.div className="flex justify-center gap-5" variants={item}>
+              <motion.button
                 type="submit"
+                whileHover={{ scale: 1.1 }}
                 className="mt-4 w-fit rounded-md bg-zinc-50 px-3 py-2 text-xl font-semibold transition dark:bg-zinc-700 dark:hover:bg-zinc-600"
               >
                 Ma note finale
-              </button>
-              <button
+              </motion.button>
+              <motion.button
                 onClick={clearInput}
+                whileHover={{ scale: 1.2 }}
                 className="mt-4 w-fit rounded-full bg-zinc-50 transition dark:bg-zinc-700 dark:hover:bg-zinc-600"
               >
                 <TiDelete className="text-5xl text-zinc-600 dark:text-zinc-400" />
-              </button>
-            </div>
-          </form>
+              </motion.button>
+            </motion.div>
+          </motion.form>
 
           {NCLCScore !== null && (
-            <div className="mt-5 text-center text-3xl font-bold text-pink-600 underline">
+            <motion.div
+              className="mt-5 text-center text-3xl font-bold text-pink-600 underline"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
               <p>NCLC {NCLCScore}</p>
-            </div>
+            </motion.div>
           )}
-        </div>
+        </motion.div>
       </div>
     </>
   )

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { BsMoonStars } from "react-icons/bs"
-import { IoIosArrowDown } from "react-icons/io"
 import { IoSunnyOutline } from "react-icons/io5"
 
 type Props = {

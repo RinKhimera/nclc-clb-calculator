@@ -3,6 +3,7 @@ import {
   readingNCLCL,
   speakingWritingNCLC,
 } from "@/constants/NCLCRange"
+import { motion } from "framer-motion"
 import { ChangeEvent } from "react"
 
 type InputProps = {
@@ -82,12 +83,17 @@ const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
             required
             className="w-1/2 rounded-xl border border-zinc-100 px-5 py-2 text-center font-semibold text-black transition focus:outline-none focus:ring-2 focus:ring-pink-600 lg:w-1/4"
           />
-          <div className="font-bold">
+          <motion.div
+            className="font-bold"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             {renderNCLCValue(listeningNCLCValue)}
             {renderNCLCValue(readingNCLCValue)}
             {renderNCLCValue(speakingNCLCValue)}
             {renderNCLCValue(writingNCLCValue)}
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

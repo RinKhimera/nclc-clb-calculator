@@ -83,9 +83,9 @@ const TcfCanada = () => {
   }
   return (
     <>
-      <div className="flex items-center justify-center">
+      <div className="flex h-full justify-center pt-20">
         <motion.div
-          className="flex w-11/12 flex-col justify-center rounded-xl border border-zinc-200 bg-zinc-100 p-5 py-10 text-zinc-800 dark:border-none dark:bg-zinc-800/50 dark:text-zinc-100 lg:w-3/4"
+          className="flex w-11/12 flex-col justify-center rounded-xl border-4 border-zinc-100 p-5 py-10 text-zinc-800 backdrop-blur-3xl dark:border-none dark:bg-zinc-800/50 dark:text-zinc-100 sm:w-2/3 lg:w-1/2"
           variants={container}
           initial="hidden"
           animate="visible"
@@ -142,14 +142,14 @@ const TcfCanada = () => {
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.1 }}
-                className="mt-4 w-fit rounded-md bg-zinc-50 px-3 py-2 text-xl font-semibold transition dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                className="mt-4 w-fit rounded-md bg-zinc-50 px-3 py-2 text-xl font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 dark:bg-zinc-700 dark:hover:bg-zinc-600"
               >
                 Ma note finale
               </motion.button>
               <motion.button
                 onClick={clearInput}
                 whileHover={{ scale: 1.2 }}
-                className="mt-4 w-fit rounded-full bg-zinc-50 transition dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                className="mt-4 w-fit rounded-full bg-zinc-50 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 dark:bg-zinc-700 dark:hover:bg-zinc-600"
               >
                 <TiDelete className="text-5xl text-zinc-600 dark:text-zinc-400" />
               </motion.button>

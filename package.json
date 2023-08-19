@@ -10,6 +10,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
     "@types/node": "20.4.8",
     "antd": "^5.8.2",
     "autoprefixer": "10.4.14",

@@ -81,7 +81,7 @@ const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
             min={min}
             max={max}
             required
-            className="w-1/2 rounded-xl border border-zinc-100 px-5 py-2 text-center font-semibold text-black transition focus:outline-none focus:ring-2 focus:ring-pink-600 lg:w-1/4"
+            className="w-1/2 rounded-xl border border-zinc-100 px-5 py-2 text-center font-semibold text-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 lg:w-1/4"
           />
           <motion.div
             className="font-bold"

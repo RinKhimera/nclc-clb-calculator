@@ -7,7 +7,7 @@ import {
   speakingWritingNCLC,
 } from "@/constants/NCLCRange"
 import getLowestNCLCValue from "@/hooks/NCLCValue"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { ChangeEvent, FormEvent, useState } from "react"
 import { TiDelete } from "react-icons/ti"
 
@@ -156,16 +156,18 @@ const TcfCanada = () => {
             </motion.div>
           </motion.form>
 
-          {NCLCScore !== null && (
-            <motion.div
-              className="mt-5 text-center text-3xl font-bold text-pink-600 underline lg:text-5xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <p>NCLC {NCLCScore}</p>
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {NCLCScore !== null && (
+              <motion.div
+                className="mt-5 text-center text-3xl font-bold text-pink-600 underline lg:text-5xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <p>NCLC {NCLCScore}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
     </>

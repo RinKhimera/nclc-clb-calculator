@@ -11,7 +11,7 @@ import { Fragment, useState } from "react"
 const navigation = [
   { name: "TCF", href: "/tcfcanada" },
   { name: "IELTS", href: "#" },
-  { name: "FAQ", href: "#" },
+  { name: "FAQ", href: "/faq" },
   { name: "A Propos", href: "#" },
 ]
 

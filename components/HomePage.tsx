@@ -15,7 +15,7 @@ const HomePage = () => {
     <>
       <div className="relative isolate px-6 pt-12 lg:px-8">
         <motion.div
-          className="mx-auto max-w-2xl py-24 sm:py-24 lg:py-32"
+          className="mx-auto max-w-2xl pt-24 lg:pt-32"
           variants={container}
           initial="hidden"
           animate="visible"
@@ -36,13 +36,34 @@ const HomePage = () => {
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Salut&apos; ! Quel résultat allons-nous comparer aujourd&apos;hui
-              ?
+              <span className="text-pink-600">Hey !</span> Quel résultat
+              allons-nous évaluer aujourd&apos;hui ?
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Les tests sont ceux du Test de Connaissance du Français pour le
-              Canada et l&apos;International English Language Testing System -
-              formation générale.
+              <span className="hidden md:block">
+                Découvrez votre Niveau de Compétence Linguistique Canadien !
+                Cette application vous aide à déterminer votre admissibilité au
+                programme{" "}
+                <a
+                  href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/immigrer-canada/entree-express/admissibilite/travailleurs-qualifies-federal.html#linguistiques"
+                  target="_blank"
+                  className="text-pink-600"
+                >
+                  Entrée Express
+                </a>{" "}
+                et{" "}
+                <a
+                  href="https://www.quebec.ca/immigration/travailler-quebec/travailleurs-qualifies/programme-regulier-travailleurs-qualifies/invitation"
+                  target="_blank"
+                  className="text-pink-600"
+                >
+                  Arrima.
+                </a>
+              </span>{" "}
+              Les tests de compétences linguistiques pris en compte sont le Test
+              de Connaissance du Français pour le Canada et l&apos;International
+              English Language Testing System - formation générale. Prêt à
+              connaître votre niveau ?
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-x-6 gap-y-4  sm:flex-row">
               <motion.div
@@ -62,9 +83,12 @@ const HomePage = () => {
               >
                 <Link
                   href="/"
-                  className="block min-w-[250px] rounded-md bg-pink-600 px-3.5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 lg:text-lg"
+                  className="block min-w-[250px] rounded-md bg-pink-600/50 px-3.5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-pink-500/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 lg:text-lg"
                 >
-                  IELTS - General (A venir)
+                  <span className="line-through decoration-2">
+                    IELTS - General
+                  </span>{" "}
+                  (A venir)
                 </Link>
               </motion.div>
             </div>

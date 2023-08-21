@@ -10,9 +10,9 @@ import { Fragment, useState } from "react"
 
 const navigation = [
   { name: "TCF", href: "/tcfcanada" },
-  { name: "IELTS", href: "#" },
+  { name: "IELTS", href: "/ielts" },
   { name: "FAQ", href: "/faq" },
-  { name: "A Propos", href: "#" },
+  { name: "A Propos", href: "/about" },
 ]
 
 const Header = () => {
@@ -63,7 +63,7 @@ const Header = () => {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="#"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-lg font-semibold leading-6 text-gray-900"
           >
             Log in <span aria-hidden="true">&rarr;</span>
           </Link>

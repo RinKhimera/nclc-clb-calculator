@@ -2,10 +2,10 @@
 
 import InputField from "@/components/InputField"
 import {
-  listeningNCLCL,
-  readingNCLCL,
-  speakingWritingNCLC,
-} from "@/constants/NCLCRange"
+  listeningCLB,
+  readingCLB,
+  speakingWritinCLB,
+} from "@/constants/CLBRange"
 import getLowestNCLCValue from "@/hooks/NCLCValue"
 import { AnimatePresence, motion } from "framer-motion"
 import { ChangeEvent, FormEvent, useState } from "react"
@@ -33,7 +33,7 @@ const item = {
   },
 }
 
-const TcfCanada = () => {
+const Ielts = () => {
   const [listening, setListening] = useState<number | null>(null)
   const [reading, setReading] = useState<number | null>(null)
   const [speaking, setSpeaking] = useState<number | null>(null)
@@ -41,34 +41,54 @@ const TcfCanada = () => {
   const [NCLCScore, setNCLCScore] = useState<number | null>(null)
 
   const handleListeningChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setListening(parseInt(event.target.value, 10))
+    const inputValue = event.target.value
+
+    // Validate the input using a regular expression
+    if (/^\d+(\.5)?$/.test(inputValue) || inputValue === "") {
+      setListening(inputValue !== "" ? parseFloat(inputValue) : null)
+    }
   }
 
   const handleReadingChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setReading(parseInt(event.target.value, 10))
+    const inputValue = event.target.value
+
+    // Validate the input using a regular expression
+    if (/^\d+(\.5)?$/.test(inputValue) || inputValue === "") {
+      setReading(inputValue !== "" ? parseFloat(inputValue) : null)
+    }
   }
 
   const handleSpeakingChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSpeaking(parseInt(event.target.value, 10))
+    const inputValue = event.target.value
+
+    // Validate the input using a regular expression
+    if (/^\d+(\.5)?$/.test(inputValue) || inputValue === "") {
+      setSpeaking(inputValue !== "" ? parseFloat(inputValue) : null)
+    }
   }
 
   const handleWritingChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setWriting(parseInt(event.target.value, 10))
+    const inputValue = event.target.value
+
+    // Validate the input using a regular expression
+    if (/^\d+(\.5)?$/.test(inputValue) || inputValue === "") {
+      setWriting(inputValue !== "" ? parseFloat(inputValue) : null)
+    }
   }
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
     // Process the form submission here
-    let listeningScore = listeningNCLCL(listening)
-    let readingScore = readingNCLCL(reading)
-    let speakingScore = speakingWritingNCLC(speaking)
-    let writingScore = speakingWritingNCLC(writing)
+    let listeningScore = listeningCLB(listening)
+    let readingScore = readingCLB(reading)
+    let writingScore = speakingWritinCLB(writing)
+    let speakingScore = speakingWritinCLB(speaking)
 
     const lowestScore = getLowestNCLCValue(
       listeningScore,
       readingScore,
-      speakingScore,
-      writingScore
+      writingScore,
+      speakingScore
     )
 
     setNCLCScore(lowestScore)
@@ -94,7 +114,7 @@ const TcfCanada = () => {
             className="text-center text-3xl font-bold tracking-tight transition sm:text-5xl"
             variants={item}
           >
-            NCLC <span className="text-pink-600">TCF Canada</span>
+            <span className="text-pink-600">IELTS General</span> CLB
           </motion.h1>
           <motion.form
             className="mt-5 flex flex-col"
@@ -103,41 +123,44 @@ const TcfCanada = () => {
             variants={item}
           >
             <InputField
-              label="Compréhension orale :"
-              name="listeningNCLC"
+              label="Listening"
+              name="listening"
               value={listening}
               onChange={handleListeningChange}
-              min={331}
-              max={699}
+              min={4.5}
+              max={10}
+              step="0.5"
             />
 
             <InputField
-              label="Compréhension écrite :"
-              name="readingNCLC"
+              label="Reading"
+              name="reading"
               value={reading}
               onChange={handleReadingChange}
-              min={342}
-              max={699}
+              min={3.5}
+              max={10}
+              step="0.5"
             />
 
             <InputField
-              label="Expression orale :"
-              name="speakingNCLC"
-              value={speaking}
-              onChange={handleSpeakingChange}
-              min={4}
-              max={20}
-            />
-
-            <InputField
-              label="Expression écrite :"
-              name="writingNCLC"
+              label="Writing"
+              name="writing"
               value={writing}
               onChange={handleWritingChange}
               min={4}
-              max={20}
+              max={10}
+              step="0.5"
             />
 
+            <InputField
+              label="Speaking"
+              name="speaking"
+              value={speaking}
+              onChange={handleSpeakingChange}
+              min={4}
+              max={10}
+              step="0.5"
+            />
             <motion.div className="flex justify-center gap-5" variants={item}>
               <motion.button
                 type="submit"
@@ -164,7 +187,7 @@ const TcfCanada = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <p>NCLC {NCLCScore}</p>
+                <p>CLB {NCLCScore}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -174,4 +197,4 @@ const TcfCanada = () => {
   )
 }
 
-export default TcfCanada
+export default Ielts

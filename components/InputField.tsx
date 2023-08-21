@@ -1,9 +1,13 @@
 import {
+  listeningCLB,
+  readingCLB,
+  speakingWritinCLB,
+} from "@/constants/CLBRange"
+import {
   listeningNCLCL,
   readingNCLCL,
   speakingWritingNCLC,
 } from "@/constants/NCLCRange"
-import { motion } from "framer-motion"
 import { ChangeEvent } from "react"
 
 type InputProps = {
@@ -13,45 +17,74 @@ type InputProps = {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
   min: number
   max: number
+  step?: string
 }
 
-const renderNCLCValue = (value: number | null) => {
-  return value !== null ? (
-    <p>
-      NCLC <span className="text-pink-600">{value}</span>
-    </p>
-  ) : null
+const renderNCLCValue = (value: number | null, name: string) => {
+  if (value !== null) {
+    if (name === "NCLC") {
+      return (
+        <p>
+          NCLC <span className="text-pink-600">{value}</span>
+        </p>
+      )
+    } else if (name === "CLB") {
+      return (
+        <p>
+          CLB <span className="text-pink-600">{value}</span>
+        </p>
+      )
+    } else {
+      return null
+    }
+  } else {
+    return null
+  }
 }
 
-const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
-  const listeningMin = 331
-  const listeningMax = 699
+const InputField = ({
+  label,
+  name,
+  step,
+  value,
+  onChange,
+  min,
+  max,
+}: InputProps) => {
+  const listeningReadingMin = 331
+  const listeningReadingMax = 699
   const speakingWritingMin = 4
   const speakingWritingMax = 20
+  const clbMin = 3.5
+  const clbMax = 10
 
   let listeningNCLCValue: number | null = null
   let readingNCLCValue: number | null = null
   let speakingNCLCValue: number | null = null
   let writingNCLCValue: number | null = null
+  let listeningCLBValue: number | null = null
+  let readingCLBValue: number | null = null
+  let speakingCLBValue: number | null = null
+  let writingCLBValue: number | null = null
 
   if (
-    name === "listening" &&
-    Number(value) >= listeningMin &&
-    Number(value) <= listeningMax
+    name === "listeningNCLC" &&
+    Number(value) >= listeningReadingMin &&
+    Number(value) <= listeningReadingMax
   ) {
     listeningNCLCValue = listeningNCLCL(Number(value))
   }
 
   if (
-    name === "reading" &&
-    Number(value) >= listeningMin &&
-    Number(value) <= listeningMax
+    name === "readingNCLC" &&
+    Number(value) >= listeningReadingMin &&
+    Number(value) <= listeningReadingMax
   ) {
     readingNCLCValue = readingNCLCL(Number(value))
   }
 
   if (
-    name === "speaking" &&
+    name === "speakingNCLC" &&
     Number(value) >= speakingWritingMin &&
     Number(value) <= speakingWritingMax
   ) {
@@ -59,11 +92,43 @@ const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
   }
 
   if (
-    name === "writing" &&
+    name === "writingNCLC" &&
     Number(value) >= speakingWritingMin &&
     Number(value) <= speakingWritingMax
   ) {
     writingNCLCValue = speakingWritingNCLC(Number(value))
+  }
+
+  if (
+    name === "listening" &&
+    Number(value) >= clbMin &&
+    Number(value) <= clbMax
+  ) {
+    listeningCLBValue = listeningCLB(Number(value))
+  }
+
+  if (
+    name === "reading" &&
+    Number(value) >= clbMin &&
+    Number(value) <= clbMax
+  ) {
+    readingCLBValue = readingCLB(Number(value))
+  }
+
+  if (
+    name === "writing" &&
+    Number(value) >= clbMin &&
+    Number(value) <= clbMax
+  ) {
+    writingCLBValue = speakingWritinCLB(Number(value))
+  }
+
+  if (
+    name === "speaking" &&
+    Number(value) >= clbMin &&
+    Number(value) <= clbMax
+  ) {
+    speakingCLBValue = speakingWritinCLB(Number(value))
   }
 
   return (
@@ -80,14 +145,19 @@ const InputField = ({ label, name, value, onChange, min, max }: InputProps) => {
             onChange={onChange}
             min={min}
             max={max}
+            step={step}
             required
             className="w-1/2 rounded-xl border border-zinc-100 px-5 py-2 text-center font-semibold text-black transition focus:outline-none focus:ring-2 focus:ring-pink-600 lg:w-1/4"
           />
           <div className="font-bold">
-            {renderNCLCValue(listeningNCLCValue)}
-            {renderNCLCValue(readingNCLCValue)}
-            {renderNCLCValue(speakingNCLCValue)}
-            {renderNCLCValue(writingNCLCValue)}
+            {renderNCLCValue(listeningNCLCValue, "NCLC")}
+            {renderNCLCValue(readingNCLCValue, "NCLC")}
+            {renderNCLCValue(speakingNCLCValue, "NCLC")}
+            {renderNCLCValue(writingNCLCValue, "NCLC")}
+            {renderNCLCValue(listeningCLBValue, "CLB")}
+            {renderNCLCValue(readingCLBValue, "CLB")}
+            {renderNCLCValue(writingCLBValue, "CLB")}
+            {renderNCLCValue(speakingCLBValue, "CLB")}
           </div>
         </div>
       </div>

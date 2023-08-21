@@ -82,13 +82,10 @@ const HomePage = () => {
                 transition={{ type: "spring" }}
               >
                 <Link
-                  href="/"
-                  className="block min-w-[250px] rounded-md bg-pink-600/50 px-3.5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-pink-500/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 lg:text-lg"
+                  href="/ielts"
+                  className="block min-w-[250px] rounded-md bg-pink-600 px-3.5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 lg:text-lg"
                 >
-                  <span className="line-through decoration-2">
-                    IELTS - General
-                  </span>{" "}
-                  (A venir)
+                  IELTS - General
                 </Link>
               </motion.div>
             </div>

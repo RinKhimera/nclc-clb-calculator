@@ -51,12 +51,32 @@ const About = () => {
               partager, n&apos;hésitez pas à{" "}
               <a href="mailto:dixiades@gmail.com" className="text-pink-600">
                 m&apos;envoyer un email.
+              </a>{" "}
+              Vous pouvez également me retrouver sur{" "}
+              <a
+                href="https://www.linkedin.com/in/samuel-pokam/"
+                target="_blank"
+                className="text-pink-600"
+              >
+                LinkedIn
+              </a>{" "}
+              et{" "}
+              <a
+                href="https://github.com/RinKhimera"
+                target="_blank"
+                className="text-pink-600"
+              >
+                GitHub.
               </a>
             </p>
             <div className="mt-16 flex flex-col text-lg italic leading-8 text-gray-600">
               <p>
                 Développé avec passion par moi et propulsé par{" "}
-                <a href="https://nextjs.org/" className="text-pink-600">
+                <a
+                  href="https://nextjs.org/"
+                  target="_blank"
+                  className="text-pink-600"
+                >
                   Next.js
                 </a>
               </p>

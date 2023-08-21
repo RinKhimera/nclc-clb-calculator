@@ -2,7 +2,12 @@
 
 import DarkModeToggle from "@/components/DarkModeToggle"
 import { Dialog, Transition } from "@headlessui/react"
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
+import {
+  Bars3Icon,
+  MoonIcon,
+  SunIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline"
 import { HomeIcon } from "@heroicons/react/24/solid"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -12,7 +17,7 @@ const navigation = [
   { name: "TCF", href: "/tcfcanada" },
   { name: "IELTS", href: "/ielts" },
   { name: "FAQ", href: "/faq" },
-  { name: "A Propos", href: "/about" },
+  { name: "A PROPOS", href: "/about" },
 ]
 
 const Header = () => {
@@ -30,7 +35,10 @@ const Header = () => {
             <HomeIcon className="h-8 w-8" />
           </Link>
         </div>
-        <div className="flex lg:hidden">
+        <div className="flex gap-x-5 lg:hidden">
+          <button>
+            <SunIcon className="h-8 w-8 text-gray-900" />
+          </button>
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -61,12 +69,9 @@ const Header = () => {
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            href="#"
-            className="text-lg font-semibold leading-6 text-gray-900"
-          >
-            Log in <span aria-hidden="true">&rarr;</span>
-          </Link>
+          <button>
+            <SunIcon className="h-8 w-8 text-gray-900" />
+          </button>
         </div>
       </nav>
       <Transition show={mobileMenuOpen} as={Fragment}>
@@ -130,15 +135,6 @@ const Header = () => {
                         </Link>
                       )
                     })}
-                  </div>
-
-                  <div className="py-6">
-                    <a
-                      href="#"
-                      className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >
-                      Log in
-                    </a>
                   </div>
                 </div>
               </div>

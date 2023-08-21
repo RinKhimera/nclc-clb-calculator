@@ -142,14 +142,14 @@ const TcfCanada = () => {
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.1 }}
-                className="mt-4 w-fit rounded-md bg-zinc-50 px-3 py-2 text-xl font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                className="mt-4 w-fit rounded-md bg-zinc-200 px-3 py-2 text-xl font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 dark:bg-zinc-700 dark:hover:bg-zinc-600"
               >
                 Ma note finale
               </motion.button>
               <motion.button
                 onClick={clearInput}
                 whileHover={{ scale: 1.2 }}
-                className="mt-4 w-fit rounded-full bg-zinc-50 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                className="mt-4 w-fit rounded-full bg-zinc-200 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 dark:bg-zinc-700 dark:hover:bg-zinc-600"
               >
                 <TiDelete className="text-5xl text-zinc-600 dark:text-zinc-400" />
               </motion.button>

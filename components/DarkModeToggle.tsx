@@ -32,7 +32,7 @@ const DarkModeToggle = () => {
         type="button"
         aria-label="Toggle dark mode"
         onClick={toggleDarkMode}
-        className="group  rounded-full bg-white/90 px-3 py-2 text-pink-400 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition hover:text-pink-600 dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+        className="group rounded-full bg-white/90 px-3 py-2 text-pink-400 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition hover:text-pink-600 dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
       >
         {/* Display appropriate icon based on darkMode state */}
         {darkMode ? (

@@ -23,7 +23,8 @@ const About = () => {
         >
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              A propos de cette application.
+              A propos de cette{" "}
+              <span className="text-pink-600">application.</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Elle découle d&apos;une initiative personnelle visant à faciliter

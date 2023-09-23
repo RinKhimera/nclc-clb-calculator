@@ -68,7 +68,7 @@ const TcfCanada = () => {
       listeningScore,
       readingScore,
       speakingScore,
-      writingScore
+      writingScore,
     )
 
     setNCLCScore(lowestScore)

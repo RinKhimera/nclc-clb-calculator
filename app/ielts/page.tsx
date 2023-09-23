@@ -88,7 +88,7 @@ const Ielts = () => {
       listeningScore,
       readingScore,
       writingScore,
-      speakingScore
+      speakingScore,
     )
 
     setNCLCScore(lowestScore)

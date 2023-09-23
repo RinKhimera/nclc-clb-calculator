@@ -11,7 +11,7 @@ const DarkModeToggle = () => {
     // Initialize dark mode state based on localStorage and user's OS preference
     localStorage.theme === "dark" ||
       (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
+        window.matchMedia("(prefers-color-scheme: dark)").matches),
   )
 
   // Effect to update dark mode state and apply changes to the DOM

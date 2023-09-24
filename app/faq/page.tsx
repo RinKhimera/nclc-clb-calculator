@@ -1,9 +1,13 @@
 "use client"
 
-import DisclosurePanel from "@/components/DisclosePanel"
-import { faqData } from "@/constants/FAQ"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { faqData } from "@/constants/Data"
 import { motion } from "framer-motion"
-import { useState } from "react"
 
 const container = {
   hidden: { opacity: 0 },
@@ -13,12 +17,6 @@ const container = {
 }
 
 const Faq = () => {
-  const [openPanelIndex, setOpenPanelIndex] = useState<number | null>(null)
-
-  const handlePanelClick = (index: number) => {
-    setOpenPanelIndex(index === openPanelIndex ? null : index)
-  }
-
   return (
     <motion.div
       className="relative isolate px-6 pt-12 lg:px-8"
@@ -27,25 +25,20 @@ const Faq = () => {
       animate="visible"
     >
       <div className="mx-auto max-w-3xl pt-24 lg:pt-32">
-        <h1 className="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+        <h1 className="mb-8 text-center text-4xl font-bold tracking-tight sm:text-6xl">
           Des interrogations ? Notre{" "}
           <span className="text-pink-600">foire aux questions</span> peut
           sûrement vous éclairer !
         </h1>
 
-        <div className="w-full pt-8">
-          <div className="mx-auto w-full max-w-2xl rounded-2xl bg-white p-2">
-            {faqData.map((item, index) => (
-              <DisclosurePanel
-                key={index}
-                question={item.question}
-                answer={item.answer}
-                isOpen={index === openPanelIndex}
-                onClick={() => handlePanelClick(index)}
-              />
-            ))}
-          </div>
-        </div>
+        <Accordion type="single" collapsible>
+          {faqData.map((item, index) => (
+            <AccordionItem value={item.element} key={index}>
+              <AccordionTrigger>{item.question}</AccordionTrigger>
+              <AccordionContent>{item.answer}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </motion.div>
   )

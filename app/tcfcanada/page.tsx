@@ -1,15 +1,30 @@
 "use client"
 
 import InputField from "@/components/InputField"
+import { Button } from "@/components/ui/button"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
 import {
   listeningNCLCL,
   readingNCLCL,
   speakingWritingNCLC,
 } from "@/constants/NCLCRange"
 import getLowestNCLCValue from "@/hooks/NCLCValue"
+import { tcfSchema } from "@/lib/validations/tcf"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { AnimatePresence, motion } from "framer-motion"
 import { ChangeEvent, FormEvent, useState } from "react"
+import { useForm } from "react-hook-form"
 import { TiDelete } from "react-icons/ti"
+import * as z from "zod"
 
 const container = {
   hidden: { opacity: 0 },
@@ -34,53 +49,20 @@ const item = {
 }
 
 const TcfCanada = () => {
-  const [listening, setListening] = useState<number | null>(null)
-  const [reading, setReading] = useState<number | null>(null)
-  const [speaking, setSpeaking] = useState<number | null>(null)
-  const [writing, setWriting] = useState<number | null>(null)
-  const [NCLCScore, setNCLCScore] = useState<number | null>(null)
+  const form = useForm<z.infer<typeof tcfSchema>>({
+    resolver: zodResolver(tcfSchema),
+    defaultValues: {
+      listening: null,
+      reading: null,
+      speaking: null,
+      writing: null,
+    },
+  })
 
-  const handleListeningChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setListening(parseInt(event.target.value, 10))
+  const onSubmit = (values: z.infer<typeof tcfSchema>) => {
+    console.log(values)
   }
 
-  const handleReadingChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setReading(parseInt(event.target.value, 10))
-  }
-
-  const handleSpeakingChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSpeaking(parseInt(event.target.value, 10))
-  }
-
-  const handleWritingChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setWriting(parseInt(event.target.value, 10))
-  }
-
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
-    // Process the form submission here
-    let listeningScore = listeningNCLCL(listening)
-    let readingScore = readingNCLCL(reading)
-    let speakingScore = speakingWritingNCLC(speaking)
-    let writingScore = speakingWritingNCLC(writing)
-
-    const lowestScore = getLowestNCLCValue(
-      listeningScore,
-      readingScore,
-      speakingScore,
-      writingScore,
-    )
-
-    setNCLCScore(lowestScore)
-  }
-
-  const clearInput = () => {
-    setListening(null)
-    setReading(null)
-    setSpeaking(null)
-    setWriting(null)
-    setNCLCScore(null)
-  }
   return (
     <>
       <div className="flex h-full justify-center pt-20">
@@ -96,7 +78,87 @@ const TcfCanada = () => {
           >
             NCLC <span className="text-pink-600">TCF Canada</span>
           </motion.h1>
-          <motion.form
+
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="mx-auto mt-6 w-4/5 space-y-5 text-center md:w-1/2"
+            >
+              <FormField
+                control={form.control}
+                name="listening"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-xl lg:text-2xl">
+                      Compréhension Orale
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        className="text-center text-2xl font-bold"
+                        type="number"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-base lg:text-xl" />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="reading"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-xl lg:text-2xl">
+                      Compréhension écrite
+                    </FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="speaking"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-xl lg:text-2xl">
+                      Expression orale
+                    </FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="writing"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-xl lg:text-2xl">
+                      Expression écrite
+                    </FormLabel>
+                    <FormControl>
+                      <Input type="number" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <Button type="submit" size={"lg"} className="text-xl lg:text-2xl">
+                Soumettre
+              </Button>
+            </form>
+          </Form>
+
+          {/* <motion.form
             className="mt-5 flex flex-col"
             action="#"
             onSubmit={handleSubmit}
@@ -154,9 +216,9 @@ const TcfCanada = () => {
                 <TiDelete className="text-5xl text-zinc-600 dark:text-zinc-400" />
               </motion.button>
             </motion.div>
-          </motion.form>
+          </motion.form> */}
 
-          <AnimatePresence>
+          {/* <AnimatePresence>
             {NCLCScore !== null && (
               <motion.div
                 className="mt-5 text-center text-3xl font-bold text-pink-600 underline lg:text-5xl"
@@ -167,7 +229,7 @@ const TcfCanada = () => {
                 <p>NCLC {NCLCScore}</p>
               </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
         </motion.div>
       </div>
     </>

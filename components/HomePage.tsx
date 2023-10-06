@@ -40,7 +40,7 @@ const HomePage = () => {
               <span className="text-pink-600">Hey !</span> Quel résultat
               allons-nous évaluer aujourd&apos;hui ?
             </h1>
-            <p className="mt-6 text-lg leading-8">
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">
               <span className="hidden md:block">
                 Découvrez votre Niveau de Compétence Linguistique Canadien !
                 Cette application vous aide à déterminer votre admissibilité au

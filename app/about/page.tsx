@@ -27,7 +27,7 @@ const About = () => {
               <span className="text-pink-600">application.</span>
             </h1>
 
-            <div className="my-10">
+            <div className="my-10 text-muted-foreground">
               <p className="mt-6 text-lg leading-8">
                 Elle découle d&apos;une initiative personnelle visant à
                 faciliter l&apos;interprétation des résultats des tests de

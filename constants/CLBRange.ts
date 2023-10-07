@@ -1,8 +1,4 @@
-export const listeningCLB = (score: number | null): number | null => {
-  if (score === null) {
-    return null
-  }
-
+export const listeningCLB = (score: number): number => {
   if (score === 4.5) {
     return 4
   } else if (score === 5) {
@@ -15,18 +11,12 @@ export const listeningCLB = (score: number | null): number | null => {
     return 8
   } else if (score === 8) {
     return 9
-  } else if (score >= 8.5 && score <= 10) {
-    return 10
   } else {
-    return null
+    return 10
   }
 }
 
-export const readingCLB = (score: number | null): number | null => {
-  if (score === null) {
-    return null
-  }
-
+export const readingCLB = (score: number): number => {
   if (score === 3.5) {
     return 4
   } else if (score >= 4 && score < 5) {
@@ -39,18 +29,12 @@ export const readingCLB = (score: number | null): number | null => {
     return 8
   } else if (score === 7) {
     return 9
-  } else if (score >= 8 && score <= 10) {
-    return 10
   } else {
-    return null
+    return 10
   }
 }
 
-export const speakingWritinCLB = (score: number | null): number | null => {
-  if (score === null) {
-    return null
-  }
-
+export const speakingWritingCLB = (score: number): number => {
   if (score >= 4 && score < 5) {
     return 4
   } else if (score === 5) {
@@ -63,9 +47,7 @@ export const speakingWritinCLB = (score: number | null): number | null => {
     return 8
   } else if (score === 7) {
     return 9
-  } else if (score >= 7.5 && score <= 10) {
-    return 10
   } else {
-    return null
+    return 10
   }
 }

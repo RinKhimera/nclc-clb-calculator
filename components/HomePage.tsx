@@ -43,24 +43,24 @@ const HomePage = () => {
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
               <span className="hidden md:block">
                 Découvrez votre Niveau de Compétence Linguistique Canadien !
-                Cette application vous aide à déterminer votre admissibilité au
-                programme{" "}
-                <a
+                Cette application vous aide à déterminer l&apos;admissibilité de
+                votre test de langue aux programmes{" "}
+                <Link
                   href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/immigrer-canada/entree-express/admissibilite/travailleurs-qualifies-federal.html#linguistiques"
                   target="_blank"
                   className="text-pink-600"
                 >
-                  Entrée Express
-                </a>{" "}
+                  Entrée Express{" "}
+                </Link>
                 et{" "}
-                <a
+                <Link
                   href="https://www.quebec.ca/immigration/travailler-quebec/travailleurs-qualifies/programme-regulier-travailleurs-qualifies/invitation"
                   target="_blank"
                   className="text-pink-600"
                 >
                   Arrima.
-                </a>
-              </span>{" "}
+                </Link>
+              </span>
               Les tests de compétences linguistiques pris en compte sont le Test
               de Connaissance du Français pour le Canada et l&apos;International
               English Language Testing System - formation générale. Prêt à

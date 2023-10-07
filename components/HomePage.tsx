@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Badge } from "./ui/badge"
+import { buttonVariants } from "./ui/button"
 
 const container = {
   hidden: { opacity: 0 },
@@ -71,17 +72,11 @@ const HomePage = () => {
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring" }}
               >
-                {/* <Link
-                  href="/tcfcanada"
-                  className={`min-w-[120px] text-xl ${buttonVariants({
-                    variant: "outline",
-                  })}`}
-                >
-                  TCF - Canada
-                </Link> */}
                 <Link
                   href="/tcfcanada"
-                  className="block min-w-[250px] rounded-md bg-pink-600 px-3.5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 lg:text-lg"
+                  className={`min-w-[120px] text-xl ${buttonVariants({
+                    variant: "default",
+                  })}`}
                 >
                   TCF - Canada
                 </Link>
@@ -91,8 +86,10 @@ const HomePage = () => {
                 transition={{ type: "spring" }}
               >
                 <Link
-                  href="/ielts"
-                  className="block min-w-[250px] rounded-md bg-pink-600 px-3.5 py-2.5 font-semibold text-white shadow-sm transition hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600 lg:text-lg"
+                  href="/tcfcanada"
+                  className={`min-w-[120px] text-xl ${buttonVariants({
+                    variant: "default",
+                  })}`}
                 >
                   IELTS - General
                 </Link>
